@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="捕梦">
+  <rect width="32" height="32" rx="7" fill="#f6f3ee"/>
+  <path d="M19.6 6.4a10.6 10.6 0 1 0 6.1 19.1A8.6 8.6 0 0 1 19.6 6.4z" fill="#78678d"/>
+  <circle cx="11.2" cy="10.4" r="1.6" fill="#a18468"/>
+</svg>

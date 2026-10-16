@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * 设计 token 直接沿用《视觉参考_捕梦_2.0_即开即用版.html》的 CSS 变量，
+ * 保证 Next.js 实现与参考原型在配色上完全一致。
+ */
+:root {
+  --bg: #f6f3ee;
+  --paper: #fffdfa;
+  --ink: #292522;
+  --muted: #8a8179;
+  --line: #e7e0d7;
+  --violet: #78678d;
+  --violet2: #eee8f3;
+  --warm: #a18468;
+
+  --focus-ring: #f0ebf5;
+  --focus-border: #b9a9c6;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    font-size: 15px;
+  }
+
+  /* 键盘可达性：所有可聚焦元素都有清晰的焦点样式 */
+  :focus-visible {
+    outline: 2px solid var(--violet);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--violet2);
+  }
+}
+
+@layer components {
+  /* ---- 标题与眉题 ---------------------------------------------------- */
+  .cd-logo {
+    @apply font-serif text-[31px] leading-none tracking-[5px] text-ink;
+  }
+
+  .cd-eyebrow {
+    @apply text-[11px] tracking-[2.5px] text-violet;
+  }
+
+  .cd-title {
+    @apply font-serif text-[30px] leading-[1.25] font-normal text-ink md:text-[36px];
+  }
+
+  .cd-sub {
+    @apply text-[13px] leading-[1.75] text-muted;
+  }
+
+  .cd-h2 {
+    @apply font-serif text-[24px] leading-[1.55] font-normal text-ink md:text-[29px];
+  }
+
+  .cd-h3 {
+    @apply font-serif text-[19px] font-normal text-ink;
+  }
+
+  .cd-h4 {
+    @apply font-serif text-[17px] font-normal text-ink;
+  }
+
+  .cd-small {
+    @apply text-[11px] leading-relaxed text-muted;
+  }
+
+  /* ---- 纸张卡片 ------------------------------------------------------ */
+  .cd-card {
+    @apply rounded-card border border-line bg-paper p-[22px] shadow-paper;
+  }
+
+  .cd-card-tight {
+    @apply rounded-soft border border-line bg-paper p-[16px];
+  }
+
+  .cd-hero {
+    background: linear-gradient(135deg, #eee8f4, #fffdfa 68%);
+  }
+
+  .cd-divider {
+    @apply border-t border-line;
+  }
+
+  /* ---- 表单 ---------------------------------------------------------- */
+  .cd-textarea {
+    @apply w-full rounded-soft border border-line bg-[#fffefb] p-[14px] leading-[1.85] text-ink;
+    outline: none;
+    resize: vertical;
+  }
+
+  .cd-textarea::placeholder {
+    color: #b3aaa1;
+  }
+
+  .cd-textarea:focus {
+    border-color: var(--focus-border);
+    box-shadow: 0 0 0 3px var(--focus-ring);
+  }
+
+  .cd-input {
+    @apply w-full rounded-[11px] border border-line bg-[#fffefb] px-[13px] py-[9px] text-ink;
+    outline: none;
+  }
+
+  .cd-input:focus {
+    border-color: var(--focus-border);
+    box-shadow: 0 0 0 3px var(--focus-ring);
+  }
+
+  .cd-select {
+    @apply rounded-[11px] border border-line bg-paper px-[10px] py-[8px] text-[13px] text-ink;
+    outline: none;
+  }
+
+  /* ---- 按钮 ---------------------------------------------------------- */
+  .cd-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill border border-line bg-paper px-[15px] py-[9px] text-[13.5px] text-[#49433f] transition-colors;
+  }
+
+  .cd-btn:hover:not(:disabled) {
+    background: #f7f3ee;
+    border-color: #ddd3c7;
+  }
+
+  .cd-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .cd-btn-primary {
+    @apply border-violet bg-violet text-white;
+  }
+
+  .cd-btn-primary:hover:not(:disabled) {
+    background: #6b5b80;
+    border-color: #6b5b80;
+  }
+
+  .cd-btn-quiet {
+    @apply border-transparent bg-transparent text-muted;
+  }
+
+  .cd-btn-quiet:hover:not(:disabled) {
+    background: var(--violet2);
+    border-color: transparent;
+    color: var(--violet);
+  }
+
+  .cd-btn-danger {
+    @apply border-[#e3d3cd] bg-[#fdf6f4] text-[#9a5f4c];
+  }
+
+  .cd-btn-danger:hover:not(:disabled) {
+    background: #faebe6;
+    border-color: #dcc2b8;
+  }
+
+  /* ---- 标签 / 徽章 --------------------------------------------------- */
+  .cd-label {
+    @apply inline-block rounded-full bg-[#e8e0ef] px-[9px] py-[5px] text-[11px] text-violet;
+  }
+
+  .cd-chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-line bg-paper px-[10px] py-[4px] text-[11px] text-[#6b625b];
+  }
+
+  .cd-chip-active {
+    @apply border-violet bg-violet2 text-violet;
+  }
+
+  /* ---- 统计 ---------------------------------------------------------- */
+  .cd-stat {
+    @apply flex items-baseline justify-between border-b border-line py-[12px] last:border-b-0;
+  }
+
+  .cd-stat-label {
+    @apply text-[13px] text-[#6b625b];
+  }
+
+  .cd-num {
+    @apply font-serif text-[23px] text-violet;
+    /* Georgia 默认用旧式数字（0 会显得偏小偏低），这里统一成等高数字 */
+    font-variant-numeric: lining-nums;
+  }
+
+  /* ---- 训练小卡 ------------------------------------------------------ */
+  .cd-tile {
+    @apply rounded-[13px] border border-line bg-paper p-[15px];
+  }
+
+  .cd-tile b {
+    @apply mb-[6px] block font-serif text-[15px] font-normal text-ink;
+  }
+
+  .cd-tile span {
+    @apply text-[12px] leading-[1.7] text-muted;
+  }
+
+  /* ---- 正文排版 ------------------------------------------------------ */
+  .cd-prose {
+    @apply font-serif text-[15px] leading-[1.9] text-[#514a44];
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .cd-loading {
+    @apply text-[13px] italic text-muted;
+  }
+}
+
+@layer utilities {
+  /* 隐藏横向滚动条但保留滚动能力（移动端顶部导航用） */
+  .cd-noscrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .cd-noscrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}

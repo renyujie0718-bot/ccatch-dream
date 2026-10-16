@@ -1,0 +1,17 @@
+allowBuilds:
+  esbuild: set this to true or false
+  unrs-resolver: set this to true or false
+# pnpm 11 起，依赖布局与构建白名单等设置迁移到本文件。
+#
+# nodeLinker: hoisted —— 使用扁平（npm 风格）的 node_modules。
+# 原因：默认的符号链接布局下，TypeScript 无法从
+# node_modules/@supabase/supabase-js/dist/*.d.ts 中解析出 @supabase/auth-js
+# 等传递依赖，导致 client.auth.getSession() 之类调用全部报「属性不存在」。
+# 这不是运行时问题，而是类型解析问题。
+nodeLinker: hoisted
+
+# 只放行确实需要执行安装脚本的包，其余依赖一律不运行 postinstall。
+onlyBuiltDependencies:
+  - esbuild
+  - unrs-resolver
+  - sharp
