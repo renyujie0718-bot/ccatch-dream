@@ -1,0 +1,17 @@
+# Netlify 部署配置（备用部署方案，Vercel 也能用同一个仓库部署）
+#
+# Netlify 识别到 Next.js 项目时会自动应用官方运行时插件，
+# 这里显式写出来是为了让配置一目了然，也避免将来改设置时踩坑。
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # 本项目在 Node 20 上验证通过
+  NODE_VERSION = "20"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Netlify 官方的 Next.js 运行时：负责 App Router、API 路由与 middleware
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
