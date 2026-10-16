@@ -265,6 +265,9 @@ node scripts/verify-catalog.mjs --write   # 把通过的条目标记为 verified
 
 ## 8. 部署到 Vercel
 
+> 第一次部署的话，直接看 [DEPLOY.md](./DEPLOY.md)：那是一份按「点哪里」写的逐步手册，
+> 包含零配置先上线、之后再补 AI 与云端账号的顺序，以及部署后的自检清单。
+
 1. 把仓库推到 GitHub / GitLab。
 2. Vercel → **Add New → Project** → 选择该仓库，框架会自动识别为 Next.js。
 3. 在 **Settings → Environment Variables** 添加第 4.3 节里的变量
